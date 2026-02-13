@@ -1,0 +1,93 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-9">
+
+      <div class="card border-0 shadow-lg rounded-4">
+        
+        <!-- Header -->
+        <div class="card-header text-white text-center rounded-top-4"
+             style="background: linear-gradient(135deg, #4e73df, #1cc88a);">
+          <h4 class="mb-0 py-3 fw-bold">Edit Profile</h4>
+        </div>
+
+        <div class="card-body p-5">
+
+          <%= form_for(resource, as: resource_name,
+                       url: registration_path(resource_name),
+                       html: { method: :put, class: "needs-validation", novalidate: true }) do |f| %>
+
+            <!-- Username -->
+            <div class="form-floating mb-4">
+              <%= f.text_field :username, class: "form-control shadow-sm", placeholder: "Username", required: true %>
+              <%= f.label :username, "Username", class: "fw-semibold" %>
+            </div>
+
+            <!-- Email -->
+            <div class="form-floating mb-4">
+              <%= f.email_field :email, class: "form-control shadow-sm", placeholder: "Email", required: true %>
+              <%= f.label :email, "Email", class: "fw-semibold" %>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-floating mb-4">
+              <%= f.text_field :phone_number, class: "form-control shadow-sm", placeholder: "Phone Number" %>
+              <%= f.label :phone_number, "Phone Number", class: "fw-semibold" %>
+            </div>
+
+
+            <!-- Address -->
+            <div class="mb-4">
+              <%= f.label :address, "Address", class: "form-label fw-semibold" %>
+              <%= f.text_area :address, class: "form-control shadow-sm rounded-3", rows: 3, placeholder: "Enter your address" %>
+            </div>
+
+            <!-- Account Number -->
+            <div class="form-floating mb-4">
+              <%= f.text_field :account_number, class: "form-control shadow-sm", placeholder: "Account Number" %>
+              <%= f.label :account_number, "Account Number", class: "fw-semibold" %>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Password Info -->
+            <p class="text-muted small">
+              Leave password fields blank if you don’t want to change it.
+            </p>
+
+            <!-- Password -->
+            <div class="form-floating mb-4">
+              <%= f.password_field :password, autocomplete: "new-password",
+                                   class: "form-control shadow-sm", placeholder: "New Password" %>
+              <%= f.label :password, "New Password", class: "fw-semibold" %>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-floating mb-4">
+              <%= f.password_field :password_confirmation,
+                                   class: "form-control shadow-sm", placeholder: "Confirm Password" %>
+              <%= f.label :password_confirmation, "Confirm Password", class: "fw-semibold" %>
+            </div>
+
+            <!-- Current Password -->
+            <div class="form-floating mb-4">
+              <%= f.password_field :current_password,
+                                   autocomplete: "current-password",
+                                   class: "form-control shadow-sm", placeholder: "Current Password", required: true %>
+              <%= f.label :current_password, "Current Password", class: "fw-semibold" %>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-3 mt-4">
+              <%= f.submit "Update Profile", class: "btn btn-primary btn-lg rounded-3 shadow-sm" %>
+              <%= link_to "Cancel", root_path,
+                          class: "btn btn-outline-secondary btn-lg rounded-3" %>
+            </div>
+
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<% if @applications.present? %>
+<% @applications.each do |app| %>
+  <p>
+    <strong><%= app.customer.email %></strong>
+    applied for
+    <strong><%= app.loan.title %></strong>
+    (Status: <%= app.status %>)
+  </p>
+<% end %>
+<% else %>
+<h1>No applications</h1>
+<%end%>

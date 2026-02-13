@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">My Loan Applications</h2>
+
+  <% if @applications.any? %>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @applications.each do |app| %>
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title mb-3"><%= app.loan.title %></h5>
+              <p class="mb-2"><strong>Bank:</strong> <%= app.loan.bank.email %></p>
+              <p class="mb-2"><strong>Interest Rate:</strong> <%= app.loan.interest_rate %> %</p>
+              <p class="mb-2"><strong>Maximum Amount:</strong> Rs <%= app.loan.max_amount %></p>
+              <p class="mb-2"><strong>Tenure:</strong> <%= app.loan.tenure_months %> months</p>
+              <p class="mb-0">
+                <strong>Status:</strong>
+                <span class="badge <%= app.status == 'Approved' ? 'bg-success' : 'bg-warning' %>">
+                  <%= app.status %>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center mt-5">
+      <h4>You have not applied for any loans yet.</h4>
+    </div>
+  <% end %>
+</div>

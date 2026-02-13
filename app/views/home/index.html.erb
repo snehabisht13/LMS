@@ -1,11 +1,83 @@
-<h1>Welcome, this is the home page</h1>
+<!-- Hero Section -->
+<div class="container mt-5">
 
-<button
-  type="button"
-  class="btn btn-lg btn-danger"
-  data-bs-toggle="popover"
-  title="Popover title"
-  data-bs-content="Amazing content, right ?"
->
-  Click to toggle popover
-</button>
+  <div class="text-center p-5 bg-light rounded shadow shadow-sm">
+    <h1 class="display-4 fw-bold text-primary">
+      Loan Management System 🏦
+    </h1>
+
+    <p class="lead mt-3">
+      A secure and easy platform to apply, manage and approve loans online.
+    </p>
+
+
+    <div class="mt-4">
+      <% unless customer_signed_in? || bank_signed_in? %>
+        <%= link_to "Start as bank",
+              new_bank_registration_path,
+              class: "btn btn-dark btn-lg me-2" %>
+
+        <%= link_to "Start as customer",
+              new_customer_registration_path,
+              class: "btn btn-dark btn-lg me-2" %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="row mt-5 g-4">
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm text-center p-4" >
+        <h4 class="text-success ">💰 Take Loan</h4>
+        <p>
+          Apply for loans from multiple banks easily with simple steps.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm text-center p-4 ">
+        <h4 class="text-primary">📄 Manage Loans</h4>
+        <p >
+          Track your loan status, repayment schedule and history.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm text-center p-4">
+        <h4 class="text-danger">🏦 Bank Approvals</h4>
+        <p>
+          Banks can review, approve or reject loan requests securely.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Additional Features -->
+  <div class="row mt-4 g-4">
+
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm text-center p-4">
+        <h4 class="text-dark">🔐 Secure Authentication</h4>
+        <p>
+          Secure login system with role-based access for Customers and Banks.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm text-center p-4 ">
+        <h4 class="text-warning">⚡ Fast & Transparent</h4>
+        <p>
+          Quick processing and complete transparency in loan management.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+<div class="card shadow-lg p-4" style="width: 400px; border-radius: 15px;">
+<h2 class="text-center mb-4">Log in (Customer)</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   <!-- Email -->
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label fw-bold" %>
+        <%= f.email_field :email, autofocus: true,
+              autocomplete: "email",
+              class: "form-control",
+              placeholder: "Enter your email" %>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label fw-bold" %>
+        <%= f.password_field :password,
+              autocomplete: "new-password",
+              class: "form-control",
+              placeholder: "Enter password" %>
+      </div>
+      
+
+ 
+  <div class="d-grid">
+        <%= f.submit "Log In", class: "btn btn-primary btn-lg rounded-pill" %>
+      </div>
+<% end %>
+
+<div class="text-center mt-3">
+      <%= render "customers/shared/links" %>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,5 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_13_115356) do
+  create_table "banks", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_banks_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_banks_on_reset_password_token", unique: true
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "address"
+    t.string "phone_number"
+    t.string "account_number"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "loan_applications", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "loan_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_loan_applications_on_customer_id"
+    t.index ["loan_id"], name: "index_loan_applications_on_loan_id"
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "interest_rate"
+    t.integer "max_amount"
+    t.integer "tenure_months"
+    t.integer "bank_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bank_id"], name: "index_loans_on_bank_id"
+  end
+
+  add_foreign_key "loan_applications", "customers"
+  add_foreign_key "loan_applications", "loans"
+  add_foreign_key "loans", "banks"
 end
