@@ -12,8 +12,6 @@ module Customers
       @applications = current_customer.loan_applications.includes(:loan)
     end
 
-    def listCustomer
-    end
 
   end
 end

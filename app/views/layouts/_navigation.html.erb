@@ -36,8 +36,8 @@
           <%= link_to "Banks", "/all_banks",
                 class: "nav-link fw-bold fs-5 text-light" %>
         </li>
-
         <%end%>
+        <% if bank_signed_in? %>
          <li class="nav-item">
                 <%= link_to "All loans", "/loans",
                       class: "nav-link fw-bold fs-5 text-light" %>
@@ -51,8 +51,7 @@
                 <%= link_to "Add Loans", "/loans/new",
                       class: "nav-link fw-bold fs-5 text-light" %>    
               </li>
-
-        
+              <% end %>
 
           <li class="nav-link fs-5 text-light">
               <% if customer_signed_in? %>
