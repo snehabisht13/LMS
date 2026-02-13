@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :loans
   resources :loans do
   resources :loan_applications, only: [:create]
-end
+  end
+  resources :loans, only: [:index] do
+  patch :approve, on: :member  # Generates approve_loan_application_path(:id)
+  end
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

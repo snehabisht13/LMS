@@ -1,12 +1,33 @@
-<% if @applications.present? %>
-<% @applications.each do |app| %>
-  <p>
-    <strong><%= app.customer.email %></strong>
-    applied for
-    <strong><%= app.loan.title %></strong>
-    (Status: <%= app.status %>)
-  </p>
-<% end %>
-<% else %>
-<h1>No applications</h1>
-<%end%>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Loan Applications for Your Bank</h2>
+
+  <% if @applications.present? %>
+    <% @applications.each do |app| %>
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <p class="mb-1"><strong>Customer:</strong> <%= app.customer.email %></p>
+            <p class="mb-1"><strong>Loan:</strong> <%= app.loan.title %></p>
+            <p class="mb-1"><strong>Interest Rate:</strong> <%= app.loan.interest_rate %>%</p>
+            <p class="mb-1"><strong>Max Amount:</strong> Rs <%= app.loan.max_amount %></p>
+            <p class="mb-1"><strong>Tenure:</strong> <%= app.loan.tenure_months %> months</p>
+            <p class="mb-0">
+              <strong>Status:</strong>
+              <span class="badge <%= app.status == 'Approved' ? 'bg-success' : 'bg-warning' %>">
+                <%= app.status %>
+              </span>
+            </p>
+          </div>
+
+          <% if app.status != "Approved" %>
+            <%= button_to "Approve", approve_loan_path(app), method: :patch, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center mt-5">
+      <h4>No loan applications found.</h4>
+    </div>
+  <% end %>
+</div>

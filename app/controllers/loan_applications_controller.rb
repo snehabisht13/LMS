@@ -1,6 +1,6 @@
 class LoanApplicationsController < ApplicationController
   before_action :authenticate_customer!
-
+  # this is for customer
   def new
   end
 
@@ -21,4 +21,7 @@ class LoanApplicationsController < ApplicationController
       redirect_to all_banks_path
     end
   end
+
+  
+
 end
